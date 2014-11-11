@@ -27,15 +27,12 @@
 package com.github.amsacode.predict4java;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 /**
  * @author David A. B. Johnson, g4dpz
