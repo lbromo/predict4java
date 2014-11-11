@@ -54,6 +54,10 @@ public class SatPassTime {
 	private static final String NEW_LINE = "\n";
 	private static final String DEG_NL = " deg.\n";
 
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMMM d, yyyy");
+	private static final SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm");
+	
+	/*
 	private static final SimpleDateFormat TIME_FORMAT;
 	private static final SimpleDateFormat DATE_FORMAT;
 	static {
@@ -62,6 +66,7 @@ public class SatPassTime {
 		DATE_FORMAT = new SimpleDateFormat("MMMMMM d, yyyy");
 		DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));
 	}
+	*/
 
 	public SatPassTime(final Date startTime, final Date endTime,
 			final String polePassed, final int aos, final int los,
@@ -120,6 +125,7 @@ public class SatPassTime {
 		return maxEl;
 	}
 
+	/*
 	private synchronized static String formatDate(Date date) {
 		return DATE_FORMAT.format(date);
 	}
@@ -127,7 +133,7 @@ public class SatPassTime {
 	private synchronized static String formatTime(Date date) {
 		return TIME_FORMAT.format(date);
 	}
-
+*/
 	/**
 	 * Returns a string representing the contents of the object.
 	 */
@@ -136,9 +142,9 @@ public class SatPassTime {
 
 		final double duration = (endTime.getTime() - startTime.getTime()) / 60000.0;
 
-		return "Date: " + formatDate(startTime) + NEW_LINE
+		return "Date: " + dateFormat.format(startTime) + NEW_LINE
 				+ "Start Time: "
-				+ formatTime(startTime)
+				+ timeFormat.format(startTime)
 				+ NEW_LINE
 				+
 				// "End Time: " + mTimeFormatter.format(endDate_time) + "\n" +
