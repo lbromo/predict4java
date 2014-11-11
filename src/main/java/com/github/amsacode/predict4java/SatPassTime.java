@@ -55,7 +55,7 @@ public class SatPassTime {
 	private static final String DEG_NL = " deg.\n";
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMMM d, yyyy");
-	private static final SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm");
+	private static final SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
 	
 	/*
 	private static final SimpleDateFormat TIME_FORMAT;
