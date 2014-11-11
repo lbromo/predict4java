@@ -285,9 +285,10 @@ public class PassPredictor {
 	 */
 	public List<SatPassTime> getPasses(final Date start, final int hoursAhead,
 			final boolean windBack) throws SatNotFoundException {
-
-		this.iterationCount = 0;
-
+	    
+                SatPassTime pass;
+	        this.iterationCount = 0;
+		
 		boolean windBackTime = windBack;
 
 		final List<SatPassTime> passes = new ArrayList<SatPassTime>();
@@ -298,20 +299,19 @@ public class PassPredictor {
 
 		Date lastAOS;
 
+		
 		int count = 0;
 
-		do {
-			if (count > 0) {
-				windBackTime = false;
-			}
-			final SatPassTime pass = nextSatPass(trackStartDate, windBackTime);
-			lastAOS = pass.getStartTime();
-			passes.add(pass);
-			trackStartDate = new Date(pass.getEndTime().getTime()
-					+ (threeQuarterOrbitMinutes() * 60L * 1000L));
-			count++;
-		} while (lastAOS.compareTo(trackEndDate) < 0);
-
+		while( (pass = nextSatPass(trackStartDate, windBackTime)).getStartTime().compareTo(trackEndDate) < 0 ){
+		    if (count > 0) {
+			windBackTime = false;
+		    }
+		    lastAOS = pass.getStartTime();
+		    passes.add(pass);
+		    trackStartDate = new Date(pass.getEndTime().getTime()
+					      + (threeQuarterOrbitMinutes() * 60L * 1000L));
+		    count++;
+		}
 		return passes;
 	}
 
